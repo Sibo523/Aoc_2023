@@ -1,0 +1,3 @@
+for o in edge & chars.keys(): #tuple of edge coordinated and rows and and overlaps the data
+    chars[o].append(int(n.group()))   #fucking mad
+    מה שהוא עשה פה בעצם
