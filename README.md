@@ -1,2 +1,2 @@
 # Aoc_2023
-my first time programming in python
+Hello, I am participating in a Aoc challange, and programing in python for the first time.
