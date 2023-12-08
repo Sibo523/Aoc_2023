@@ -5,7 +5,7 @@ having a diconary
 """
 from copy import deepcopy
 
-dic = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 1, 'Q': 12, 'K': 13, 'A': 14}
+dic = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 1, 'Q': 12, 'K': 13, 'A': 14} 
 ender ={(5,5):[],(4,1):[],(3,2):[],(3,1):[],(2,2):[],(2,1):[],(1,1):[]}
 
 from collections import defaultdict
@@ -24,9 +24,7 @@ def main(file):
 
         maxi = max(copy.values())
         mini = min(copy.values())
-
         maxi+=count
-
         if maxi >= 5:
             maxi = 5
             mini = 5
@@ -39,15 +37,11 @@ def main(file):
         e.sort(reverse= True,key = lambda x: ([dic[c] for c in x[0]]))
     count = 1000
     sum = 0
-    list = []
     for e in ender.values():
         for b in e:
-            # print(b)
             sum += int(b[1])*count #bid*count
             count-=1
-            list.append((b[0],int(b[1])))
-    print(sum) #250946742
-    print(list)
+    print(sum) #251824095
 
 if __name__ == '__main__':
     with open('day7.txt') as file:
