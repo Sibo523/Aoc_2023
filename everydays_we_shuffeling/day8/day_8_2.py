@@ -12,13 +12,12 @@ def main(file):  # remember to split ', ' for the keys to the next thing
     real_counter = 0
     prod = 1
     for cur in list:
-        counter = 0
         real_counter = 0
         while not cur[-1] == 'Z' :
             ch = instruction[counter]
             left, right = Dict[cur].split(', ')
             cur = left if ch == 'L' else right
-            counter = (counter + 1) % len(instruction)
+            instruction = instruction[1:] + instruction[0] #used the elegent way described in part 1
             real_counter += 1
         prod =prod * real_counter// gcd(prod,real_counter)
     print(prod)
