@@ -54,9 +54,7 @@ def friends(tup,mapy,lemur):
 def main(file):
     lemur = file.split('\n') #funnier name :)
     mapy = [[0 if i == 'S' else 'e' for i in row] for row in lemur]
-    # stack = [(22,114 ,0)] #y,x
-    position_s = [(row_idx, col_idx) for row_idx, row in enumerate(lemur) for col_idx, val in enumerate(row) if
-                  val == 'S']
+    position_s = [(row_idx, col_idx) for row_idx, row in enumerate(lemur) for col_idx, val in enumerate(row) if val == 'S']
     position_s[0] += (0,)
     stack = [position_s[0]]
     while stack:
@@ -69,8 +67,11 @@ def main(file):
         for j in i:
             if isinstance(j,int):
                 counter = max(j,counter)
-    print(counter)
-
+    print(counter,'|'*100)
+    for i in mapy:
+        for j in i:
+            print(f'{j:4}',end = " ")
+        print('')
 
 
 if __name__ == '__main__':
