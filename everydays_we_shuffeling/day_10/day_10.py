@@ -1,6 +1,3 @@
-
-import math
-
 """"
 | is a vertical pipe connecting north and south.
 - is a horizontal pipe connecting east and west.
@@ -22,7 +19,6 @@ dic = {
     }
 def can(can_i, tup):
     return can_i[0] == tup[0] and can_i[1] == tup[1]
-
 def get_sym(lemur,tup):
     return lemur[tup[0]][tup[1]]
 def get_val(mapy, tup): #return the int in that place in the map
@@ -34,27 +30,20 @@ def friends(tup,mapy,lemur):
     sym = get_sym(lemur,tup) #save the symbol that we are corrently in
     go_to = [(tup[0]+i[0],tup[1]+i[1]) for i in dic[sym]]
 
-    for tuf in go_to:
+    for tuf in go_to: #I run to all places I can go to
         new_sym = get_sym(lemur,tuf)
-        if new_sym == '.': continue
-        can_i = [(tuf[0]+i[0],tuf[1]+i[1]) for i in dic[new_sym]]
+        if new_sym == '.': continue #if it's '.' then it's a dead end no need to even look at it
+        can_i = [(tuf[0]+i[0],tuf[1]+i[1]) for i in dic[new_sym]] #show where tuf can go
 
-        flag = False
-        for index,kuf in enumerate(can_i): # check if it's valid symbol I can really go to
-            if can(kuf,tup): # it means that I came from there
-                flag = True
-                can_i.pop(index)
-                break
-        if flag:
-            tuf += (tup[2]+1,)
-            if get_val(mapy,tuf) == 'e'or tuf[2] < int(get_val(mapy,tuf)):
-                set_val(mapy,tuf)
-                end.append(tuf)
+        if any(can(kuf, tup) for kuf in can_i): #mainly check that tuf can go back to tup if so then
+            tuf += (tup[2]+1,) #add new value
+            if get_val(mapy,tuf) == 'e'or tuf[2] < int(get_val(mapy,tuf)): #check if the value is relevent
+                set_val(mapy,tuf) #modify the map
+                end.append(tuf) #add it to the stack to keep going from there
     return end
 def main(file):
     lemur = file.split('\n') #funnier name :)
     mapy = [[0 if i == 'S' else 'e' for i in row] for row in lemur]
-    # stack = [(22,114 ,0)] #y,x
     position_s = [(row_idx, col_idx) for row_idx, row in enumerate(lemur) for col_idx, val in enumerate(row) if
                   val == 'S']
     position_s[0] += (0,)
@@ -69,7 +58,11 @@ def main(file):
         for j in i:
             if isinstance(j,int):
                 counter = max(j,counter)
-    print(counter)
+    print(counter, '|' * 100)
+    for i in mapy:
+        for j in i:
+            print(f'{j:4}', end=" ")
+        print('')
 
 
 
