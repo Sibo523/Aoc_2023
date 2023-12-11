@@ -39,7 +39,6 @@ def printi(mapy):
         for j in i:
             print(j, end = " ")
         print("")
-dictator = {'F7':1,'FJ':1,'L7':1,'LJ':1,'S7':1,'SJ':1,'FS':1,'LS':1}
 def main(file):
     lemur = file.split('\n') #funnier name :)
     mapy = [[0 if i == 'S' else 'e' for i in row] for row in lemur]
