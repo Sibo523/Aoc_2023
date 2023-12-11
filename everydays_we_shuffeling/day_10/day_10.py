@@ -1,12 +1,3 @@
-""""
-| is a vertical pipe connecting north and south.
-- is a horizontal pipe connecting east and west.
-L is a 90-degree bend connecting north and east.
-J is a 90-degree bend connecting north and west.
-7 is a 90-degree bend connecting south and west.
-F is a 90-degree bend connecting south and east.
-. is ground; there is no pipe in this tile.
-S is the starting position of the animal; there is a pipe """
 dic = {
     '|': [(-1, 0), (1, 0)],
     '-': [(0, -1), (0, 1)],
@@ -44,27 +35,16 @@ def friends(tup,mapy,lemur):
 def main(file):
     lemur = file.split('\n') #funnier name :)
     mapy = [[0 if i == 'S' else 'e' for i in row] for row in lemur]
-    position_s = [(row_idx, col_idx) for row_idx, row in enumerate(lemur) for col_idx, val in enumerate(row) if
-                  val == 'S']
-    position_s[0] += (0,)
+    position_s = [(row_idx, col_idx,0) for row_idx, row in enumerate(lemur) for col_idx, val in enumerate(row) if val == 'S']
     stack = [position_s[0]]
+
     while stack:
         start = stack.pop(0)
         here = friends(start,mapy,lemur)
         stack.extend(here)
 
-    counter = 0
-    for i in mapy:
-        for j in i:
-            if isinstance(j,int):
-                counter = max(j,counter)
-    print(counter, '|' * 100)
-    for i in mapy:
-        for j in i:
-            print(f'{j:4}', end=" ")
-        print('')
-
-
+    counter = max(j for i in mapy for j in i  if isinstance(j,int))
+    print(counter)
 
 if __name__ == '__main__':
     with open('day_10.txt') as file:

@@ -1,40 +1,26 @@
 
 def main(file):
-    f = file.split('\n')
-    new_lines = []
-    bruy = []
-    for index,line in enumerate(f):
-        new_lines.append(line)
-        if all(ch == '.' for ch in line):
-            bruy.append(index)
-    transpose = list(zip(*new_lines))
-    new_lines.clear()
-    brux = []
-    for index,line in enumerate(transpose):
-        new_lines.append(line)
-        if all(ch == '.' for ch in line):
-            brux.append(index)
+    new_lines = file.split('\n')
+    bruy = [index for index,line in enumerate(new_lines) if all(ch == '.' for ch in line)] #list of all columns that worth more
     transpose = list(zip(*new_lines))
 
-    dic = []
-    for y,line in enumerate(transpose):
+    brux = [index for index,line in enumerate(transpose) if all(ch == '.' for ch in line)] #list of all columns that worth more
+    new_lines = list(zip(*transpose))
+
+    dic = [] #stores all galaxyies with the updated cords
+    pad_worth =1e7-1 #how much pading for each empty space
+    for y,line in enumerate(new_lines):
         for x,char in enumerate(line):
             if char == '#':
-                tempx =0
-                tempy = 0
-                for i in brux:
-                    if i < x:
-                        tempx+= 999999
-                for i in bruy:
-                    if i < y:
-                        tempy += 999999
+                tempx = pad_worth*len([i for i in brux if i < x])
+                tempy = pad_worth * len([i for i in bruy if i < y])
                 dic.append((y+tempy,x+tempx))
-    sum = 0
-    for index,val in enumerate(dic):
-        for i in dic[index+1:]:
-            sum+= abs(val[0]-i[0])+abs(val[1]-i[1])
-
-    print(sum)
+    """"
+    sum all pairs possible, start from the first galaxy runs on all over galaxies 
+    the reason for dic[index+1:] is so it won't sum up the pairs that been considered 
+    """
+    print(sum([abs(val[0]-i[0])+abs(val[1]-i[1]) for index,val in enumerate(dic) for i in dic[index+1:]]))
+    #678728808158
 
 if __name__ == '__main__':
     with open('day_11.txt') as file:

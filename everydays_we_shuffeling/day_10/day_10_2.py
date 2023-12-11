@@ -1,4 +1,3 @@
-
 dic = {
     '|': [(-1, 0), (1, 0)],
     '-': [(0, -1), (0, 1)],
@@ -56,8 +55,8 @@ def main(file):
         for x,j in enumerate(i):
             if j == 'e':
                 cock[y][x] = 'e'
-    count = 0
 
+    count = 0
     for line in cock:
         inside = False
         pos = 0
