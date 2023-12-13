@@ -1,5 +1,5 @@
 
-import numpy,re,math
+import re,math
 
 def winning_races(total_time, record_distance):
     root1 = ((total_time + ((total_time**2 -4*record_distance)**(1/2)))/2 - 0.05)
