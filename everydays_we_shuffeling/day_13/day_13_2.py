@@ -6,7 +6,7 @@ def find_mirror(grid_lines):
         above = above[:len(below)]
         below = below[:len(above)]
         #every missmatch adds 1
-        c = sum(0 if above[i][index] == below[i][index] else 1 for i in range(len(above)) for index in range(len(above[i])) ) # c  = for every right thing
+        c = sum(above[i][index] != below[i][index] for i in range(len(above)) for index in range(len(above[i]))) # c  = for every right thing
         if c == 1: #can be precisely 1 cause there's a smudge
             return index
     return 0
