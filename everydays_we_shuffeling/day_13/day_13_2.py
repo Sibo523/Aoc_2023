@@ -19,13 +19,6 @@ def main(file):
         total += find_mirror(list(zip(*grid_lines)))
     print(total)
 
-
-
-
-
-
-
-
 if __name__ == '__main__':
     with open('day_13.txt') as file:
         main(file.read().split('\n\n'))
