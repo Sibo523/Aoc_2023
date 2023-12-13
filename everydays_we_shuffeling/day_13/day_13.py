@@ -13,8 +13,9 @@ def find_mirror(grid_lines):
 
 def main(file):
     total = 0
-    for block in file:
-        grid_lines = block.splitlines()
+    for section in file:
+        grid_lines = section.splitlines()
+
         total += 100*find_mirror(grid_lines)
         total += find_mirror(list(zip(*grid_lines)))
     print(total)
