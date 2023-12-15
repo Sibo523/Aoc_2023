@@ -7,8 +7,7 @@ def Hash(line):
 
 
 def main(file):
-    print(sum(Hash(line) for line in file))
-
+    print(sum(map(Hash, file)))
 
 if __name__ == '__main__':
     with open ('day_15.txt') as file:

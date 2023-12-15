@@ -13,7 +13,7 @@ def main(file):
         else:
             line = line.split('=')
             arr[Hash(line[0])][line[0]] = int(line[1])
-    print(sum(int(arr[i][j])*(i+1)*(index+1) for i in range(len(arr)) for index,j in enumerate(arr[i]))) #210906
+    print(sum(arr[i][j]*(i+1)*(index+1) for i in range(len(arr)) for index,j in enumerate(arr[i]))) #210906
 if __name__ == '__main__':
     with open ('day_15.txt') as file:
         main(file.read().split(','))
