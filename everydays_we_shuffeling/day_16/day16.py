@@ -43,7 +43,6 @@ def main(f):
                 y += dic[i][0]
                 x += dic[i][1]
                 if not in_range(y,x , bruh): continue
-                # count(kingo, y, x)
                 set.add((y,x))
                 st.append((y , x , i))
                 if get_symbol(bruh, y, x) in '^>.<v':
@@ -54,14 +53,10 @@ def main(f):
             if not in_range(y, x, bruh): continue
             if get_symbol(bruh, y, x) == w:
                 continue
-            # count(kingo, y, x)
             set.add((y, x))
             st.append((y, x, w))
             if get_symbol(bruh, y, x) in '^>.<v':
                 bruh[y][x] = w
-    # print(sum(j for i in kingo for j in i))
-    # preaty_print(kingo)
-    preaty_print(bruh)
     print(len(set))
 
 
