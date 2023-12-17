@@ -8,8 +8,7 @@ def main(file):
     for line in file:
         if '-' in line:
             line = line.split('-')
-            if line[0] in arr[Hash(line[0])]:
-                arr[Hash(line[0])].pop(line[0])
+            arr[Hash(line[0])].pop(line[0],None) #if it doesn't exist doesn't do anything
         else:
             line = line.split('=')
             arr[Hash(line[0])][line[0]] = int(line[1])
