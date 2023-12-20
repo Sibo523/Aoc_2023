@@ -2,6 +2,7 @@ mapy, instruction = open('day19.txt').read().split('\n\n')  # Split the map and 
 dic = {key: line[:-1].split(',') for key, line in (i.split('{') for i in mapy.split('\n'))}
 socially_accepted = []
 
+
 def x_max(x, m, a, s):
     global dic
     cur = 'in'
@@ -9,16 +10,15 @@ def x_max(x, m, a, s):
         if cur in 'RA':
             return cur == 'A'
         for i in dic[cur]:
-            if ':' in i: #if I found
+            if ':' in i:  # if I found
                 val, to = i.split(':')
-                if eval(val): #if it's true then I want to go where it tells me too so I break from the current instruction
+                if eval(val):  # if it's true then I want to go where it tells me too so I break from the current instruction
                     cur = to
                     break
             elif i in 'RA':
                 return i == 'A'
             else:
                 cur = i
-
 
 
 for instru in instruction.split('\n'):
