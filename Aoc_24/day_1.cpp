@@ -29,6 +29,5 @@ int main()
             sum += left[i] * right[left[i]];
         }
     }
-    std::cout << i << std::endl;
     std::cout << sum << std::endl;
 }
