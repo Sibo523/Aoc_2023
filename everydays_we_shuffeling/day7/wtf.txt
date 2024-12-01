@@ -1,6 +1,0 @@
-# value = 0
-        # for v,n in copy.items():#sorted_list = sorted(your_tuple_list, key=lambda x: [dic[c] for c in x]
-        #     if len(copy) == 5 or len(copy) == 1: value = max(dic[k] for k in copy.keys())
-        #     if(n>1):
-        #         value = dic[v]*n
-        # tup += (value,)
