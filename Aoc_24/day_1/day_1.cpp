@@ -4,13 +4,14 @@
 #include <iostream>
 #include <stdio.h>
 #include <algorithm>
-#include <map>
-
+#include <unordered_map>
+// part 1 and 2 are too similar so I will just leave it like this :)
 int main()
 {
     std::ifstream f("input_1.txt");
+
     std::vector<int> left;
-    std::map<int, int> right;
+    std::unordered_map<int, int> right;
     std::string s;
     // read the input and split each line into a pair of integers
     while (std::getline(f, s))
